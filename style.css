@@ -163,28 +163,55 @@ section {
 /* Process */
 .steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
 .step {
-    padding: 2rem;
+    padding: 2.5rem;
     background: var(--card-bg);
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: 0.3s;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.light-mode .step {
+    border: 1px solid rgba(0,0,0,0.1);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .step:hover {
-    background: rgba(255,255,255,0.05);
     transform: translateY(-10px);
+    border-color: var(--primary-color);
 }
 
 .step-num {
-    font-size: 3rem;
-    font-weight: 800;
-    opacity: 0.1;
-    margin-bottom: -1.5rem;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, var(--primary-color), transparent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.4;
+}
+
+body.light-mode .step-num {
+    opacity: 0.2;
+}
+
+.step h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.step p {
+    font-size: 1.05rem;
+    opacity: 0.9;
 }
 
 /* Service Grid */
