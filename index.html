@@ -135,21 +135,37 @@
     <script>
         // Theme Toggle
         const themeBtn = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeBtn.innerText = '🌙';
+        }
+
         themeBtn.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
-            themeBtn.innerText = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+            const isLight = document.body.classList.contains('light-mode');
+            themeBtn.innerText = isLight ? '🌙' : '☀️';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
         });
 
         // Language Toggle
         const langBtn = document.getElementById('lang-toggle');
-        let currentLang = 'en';
+        let currentLang = localStorage.getItem('lang') || 'en';
+        
+        const updateLang = (lang) => {
+            langBtn.innerText = lang === 'en' ? 'FR' : 'EN';
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${lang}`);
+            });
+            localStorage.setItem('lang', lang);
+        };
+
+        updateLang(currentLang);
+
         langBtn.addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'fr' : 'en';
-            langBtn.innerText = currentLang === 'en' ? 'FR' : 'EN';
-            
-            document.querySelectorAll('[data-en]').forEach(el => {
-                el.innerHTML = el.getAttribute(`data-${currentLang}`);
-            });
+            updateLang(currentLang);
         });
     </script>
 </body>
