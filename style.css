@@ -5,6 +5,16 @@
     --secondary-color: #3a7bd5;
     --text-color: #e0e0e0;
     --accent-color: #ff3e00;
+    --nav-bg: rgba(10, 10, 11, 0.8);
+}
+
+body.light-mode {
+    --bg-color: #f8f9fa;
+    --card-bg: rgba(0, 0, 0, 0.03);
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --text-color: #212529;
+    --nav-bg: rgba(248, 249, 250, 0.8);
 }
 
 * {
@@ -19,6 +29,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Typography */
@@ -32,18 +43,23 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 10%;
+    padding: 1.5rem 10%;
     position: fixed;
     width: 100%;
     z-index: 1000;
-    background: rgba(10, 10, 11, 0.8);
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.light-mode nav {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .logo {
     font-weight: 800;
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .logo span {
@@ -51,24 +67,55 @@ nav {
     font-weight: 300;
 }
 
-nav ul {
+.nav-links {
     display: flex;
     list-style: none;
     align-items: center;
 }
 
-nav ul li {
+.nav-links li {
     margin-left: 2rem;
 }
 
-nav ul li a {
+.nav-links li a {
     text-decoration: none;
     color: var(--text-color);
     font-size: 0.9rem;
     transition: color 0.3s;
 }
 
-nav ul li a:hover {
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+.nav-controls {
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.control-btn {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+body.light-mode .control-btn {
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.control-btn:hover {
+    border-color: var(--primary-color);
     color: var(--primary-color);
 }
 
@@ -79,6 +126,7 @@ nav ul li a:hover {
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.3s;
+    color: #fff !important;
 }
 
 .cta-btn:hover {
