@@ -43,87 +43,42 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%; /* Reduced padding for mobile */
+    padding: 1rem 5%;
     position: fixed;
     width: 100%;
     z-index: 1000;
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-body.light-mode nav {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .logo {
     font-weight: 800;
-    font-size: 1.2rem; /* Slightly smaller for mobile */
+    font-size: 1.1rem;
     color: var(--text-color);
-    flex-shrink: 0;
-}
-
-.logo span {
-    color: var(--primary-color);
-    font-weight: 300;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    margin: 0 auto; /* Center the links */
-}
-
-.nav-links li {
-    margin: 0 1rem;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 0.85rem;
-    transition: color 0.3s;
-}
-
-.nav-links li a:hover {
-    color: var(--primary-color);
+    letter-spacing: -1px;
 }
 
 .nav-controls {
     display: flex;
-    gap: 0.5rem;
-    flex-shrink: 0;
+    gap: 0.8rem;
+    align-items: center;
 }
 
 .control-btn {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.15); /* More visible border */
-    color: var(--text-color);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.75rem;
-    transition: 0.3s;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-body.light-mode .control-btn {
-    border: 1px solid rgba(0,0,0,0.15);
-}
-
-.control-btn:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: scale(1.1);
-}
-
-@media (max-width: 900px) {
-    .nav-links { display: none; }
+.control-btn:active {
+    transform: scale(0.9);
 }
 
 .cta-btn:hover {
